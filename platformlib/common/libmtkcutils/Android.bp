@@ -1,0 +1,51 @@
+cc_library_static {
+    name: "libmtkrillog_android_arm",
+    proprietary: true,
+    srcs: [
+        "atomic.c"
+    ],
+    header_libs: [
+        "mtk_ril_include_headers",
+    ],
+    arch: {
+        arm: {
+            instruction_set: "arm",
+        },
+    },
+}
+
+cc_library_shared {
+    name: "libmtkcutils",
+    srcs: [
+        "sockets.cpp",
+        "strdup16to8.c",
+        "strdup8to16.c",
+        "socket_local_client_unix.c",
+        "socket_local_server_unix.c",
+        "sockets_unix.cpp",
+        "native_handle.c",
+        "sched_policy.c",
+        "android_get_control_file.cpp",
+    ],
+    header_libs: [
+        "mtk_ril_include_headers",
+        "libMtkLogHeaders",
+        "libUtilsHeaders",
+    ],
+    shared_libs: [
+        "libmtkrillog",
+    ],
+    static_libs: [
+        "libmtkrillog_android_arm",
+    ],
+    export_header_lib_headers: [
+        "mtk_ril_include_headers",
+    ],
+    proprietary: true,
+    owner: "mtk",
+    cflags: [
+        "-Werror",
+        "-Wall",
+        "-Wextra",
+    ],
+}

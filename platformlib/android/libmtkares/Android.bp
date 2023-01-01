@@ -1,0 +1,22 @@
+cc_library_shared {
+    name: "libmtkares",
+    srcs: [
+        "mtk_ares.c",
+    ],
+    header_libs: [
+        "mtk_ril_ares_headers",
+    ],
+    shared_libs: [
+        "libcares_naptr",
+    ],
+    static_libs: [
+        "libcutils",
+    ],
+    proprietary: true,
+    owner: "mtk",
+    cflags: [
+        "-Werror",
+        "-Wall",
+        "-Wextra",
+    ],
+}
